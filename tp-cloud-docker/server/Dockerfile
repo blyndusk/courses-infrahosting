@@ -1,11 +1,12 @@
-FROM node:alpine
-
+# expand node:alpine img
+FROM node:10
+# work in /home/node dir
 WORKDIR /home/app
-
-COPY package.json .
-
+# copy package.json to /home/node
+COPY package.json ./
+# install deps
 RUN npm install
-
-COPY . .
-
+# copy source code
+COPY . ./
+# lauch default command
 CMD ["npm", "run", "start"]
