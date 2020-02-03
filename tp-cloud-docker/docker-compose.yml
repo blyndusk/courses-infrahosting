@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+
+  api:
+    image: blyndusk/tp-aws-server:1.0
+    ports:
+      - 3000:3000
+    working_dir: /home/app
+    environment:
+      DB_HOST: database
+      DB_USER: 'test'
+      DB_PASSWORD: 'test'
+      DB_NAME: 'mydatabase'
+    networks:
+      - database
+
+  front:
+    image: blyndusk/tp-aws-client:1.0
+    ports:
+      - 8080:80
+    
+    
+
+networks:
+  database:
